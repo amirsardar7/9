@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قطار گسترش جمله</title>
+<style>
+:root{--navy:#173b67;--blue:#2879b9;--teal:#279b91;--gold:#f4bd45;--cream:#fffaf0;--ink:#20324a}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#eaf6ff,#f8fff1);font-family:Tahoma,Arial,sans-serif;color:var(--ink);line-height:1.8}
+.wrap{max-width:950px;margin:24px auto;padding:16px}
+.poster{background:#fff;border:4px solid #d6e9f4;border-radius:28px;overflow:hidden;box-shadow:0 12px 35px #173b6720}
+header{background:linear-gradient(120deg,#173b67,#2879b9);color:#fff;text-align:center;padding:24px 16px}
+h1{margin:0;font-size:clamp(27px,5vw,42px)}
+header p{margin:6px 0 0;color:#eaf7ff;font-size:16px}
+.intro{padding:14px 22px;text-align:center;background:#fff7df;font-weight:bold}
+main{padding:20px}
+.scorebar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.pill{background:#edf6ff;border:2px solid #c8e1f2;border-radius:18px;padding:7px 14px;font-weight:bold}
+.train{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin:18px 0}
+.engine,.wagon{position:relative;flex:1 1 155px;min-width:145px;border-radius:18px;padding:14px 12px;text-align:center;border:3px solid #d7e6f0;background:#f7fbff}
+.engine{background:#e8f4ff;border-color:#8dc3e8}
+.wagon:nth-child(2){background:#fff2d8;border-color:#f4cc71}
+.wagon:nth-child(3){background:#e9f8e9;border-color:#9dd49c}
+.wagon:nth-child(4){background:#f5edff;border-color:#c4a4e8}
+.wagon:nth-child(5){background:#ffedf1;border-color:#e7a8b8}
+.train h3{margin:0 0 8px;font-size:17px;color:var(--navy)}
+select{width:100%;padding:10px 8px;border:2px solid #c7d8e6;border-radius:12px;background:#fff;font:inherit;font-size:14px;color:#24364c}
+.connector{align-self:center;font-size:25px;color:#91aabd;font-weight:bold}
+.output{background:#f7fbff;border:2px dashed #91b9d4;border-radius:18px;padding:14px;margin:16px 0;min-height:76px}
+.output strong{color:var(--navy)}
+.sentence{font-size:20px;font-weight:bold;color:#173b67;margin-top:6px}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0}
+button{border:0;border-radius:14px;padding:11px 20px;font:inherit;font-weight:bold;cursor:pointer}
+.primary{background:#247bb7;color:white}
+.secondary{background:#e9f2f8;color:#173b67}
+.gold{background:#f6c653;color:#46340b}
+button:focus,select:focus{outline:3px solid #f4bd45;outline-offset:2px}
+.feedback{min-height:34px;text-align:center;font-weight:bold;padding:6px}
+.tip{background:#f0f8f1;border-right:5px solid #51a76b;padding:10px 14px;border-radius:12px;margin-top:14px}
+footer{text-align:center;background:#173b67;color:#fff;padding:12px;font-weight:bold}
+.small{font-size:13px;color:#63758a}
+@media(max-width:600px){.wrap{padding:8px;margin:8px auto}main{padding:12px}.train{gap:7px}.engine,.wagon{flex-basis:calc(50% - 8px)}.connector{display:none}.sentence{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="poster">
+<header>
+<h1>🚂 قطار گسترش جمله</h1>
+<p>از یک جمله ساده حرکت کن و با افزودن جزئیات، آن را کامل‌تر بساز!</p>
+</header>
+<div class="intro">بازی آموزشی فارسی و نگارش ـ پایه سوم ابتدایی</div>
+<main>
+<div class="scorebar">
+<div class="pill">⭐ امتیاز: <span id="score">۰</span></div>
+<div class="pill">🎯 مرحله: <span id="round">۱</span> از ۳</div>
+<div class="pill">🧩 هر واگن، یک پرسش!</div>
+</div>
+<p><b>روش بازی:</b> در هر واگن، یک گزینه انتخاب کن. هرچه به جمله اطلاعات مرتبط‌تری اضافه کنی، جمله‌ات کامل‌تر می‌شود.</p>
+<div class="train">
+<section class="engine">
+<h3>🚂 لوکوموتیو</h3>
+<div><b>هسته جمله</b></div>
+<div id="core" class="sentence">پرنده پرواز کرد.</div>
+<div class="small">چه کسی؟ + چه کاری؟</div>
+</section>
+<div class="connector">⬅</div>
+<section class="wagon">
+<h3>واگن ۱: چه زمانی؟</h3>
+<select id="time"><option value="">انتخاب کن...</option><option>صبح زود</option><option>بعدازظهر</option><option>دیروز</option><option>در یک روز بهاری</option></select>
+</section>
+<div class="connector">⬅</div>
+<section class="wagon">
+<h3>واگن ۲: کجا؟</h3>
+<select id="place"><option value="">انتخاب کن...</option><option>در آسمان آبی</option><option>در حیاط مدرسه</option><option>روی شاخه درخت</option><option>در باغ سرسبز</option></select>
+</section>
+<div class="connector">⬅</div>
+<section class="wagon">
+<h3>واگن ۳: چگونه؟</h3>
+<select id="how"><option value="">انتخاب کن...</option><option>با شادی</option><option>آرام و آهسته</option><option>با سرعت</option><option>با دقت و مهربانی</option></select>
+</section>
+</div>
+<div class="output">
+<strong>✍️ جمله‌ای که ساخته‌ای:</strong>
+<div id="sentence" class="sentence">واگن‌ها را پر کن تا جمله‌ات ساخته شود.</div>
+</div>
+<div class="buttons">
+<button class="primary" id="build">ساختن جمله</button>
+<button class="gold" id="check">بررسی و امتیازگیری</button>
+<button class="secondary" id="next">مرحله بعدی</button>
+<button class="secondary" id="reset">شروع دوباره</button>
+</div>
+<div id="feedback" class="feedback" aria-live="polite"></div>
+<div class="tip"><b>💡 نکته یادگیری:</b> برای گسترش جمله، به پرسش‌های «چه زمانی؟»، «کجا؟» و «چگونه؟» پاسخ بده. اطلاعات تازه باید با موضوع جمله ارتباط داشته باشد.</div>
+<p class="small">پس از ساخت جمله، آن را با صدای بلند بخوان و بررسی کن: آیا جمله روشن، درست و معنادار است؟</p>
+</main>
+<footer>طراح بازی: یاسمن معدنی‌پور</footer>
+</div>
+</div>
+<script>
+const rounds=[
+ {core:"پرنده پرواز کرد.",subject:"پرنده",verb:"پرواز کرد",times:["صبح زود","بعدازظهر","دیروز","در یک روز بهاری"],places:["در آسمان آبی","روی شاخه درخت","در باغ سرسبز","بالای خانه‌ها"],hows:["با شادی","آرام و آهسته","با بال‌های نیرومند","با شوق و هیجان"]},
+ {core:"دانش‌آموزان گل کاشتند.",subject:"دانش‌آموزان",verb:"گل کاشتند",times:["امروز","صبح روز جمعه","در آغاز بهار","پس از زنگ تفریح"],places:["در باغچه مدرسه","کنار کلاس","در حیاط مدرسه","در باغچه کوچک"],hows:["با همکاری یکدیگر","با دقت و مهربانی","با شادی","با کمک آموزگار"]},
+ {core:"کودک کتاب خواند.",subject:"کودک",verb:"کتاب خواند",times:["هر شب","بعدازظهر","دیروز","پس از انجام تکالیف"],places:["در کتابخانه","در اتاق خود","کنار پنجره","در کلاس"],hows:["با علاقه","با صدای آرام","با دقت","با اشتیاق فراوان"]}
+];
+let current=0,score=0,checked=[false,false,false];
+const $=id=>document.getElementById(id);
+function fillSelect(id,items){const s=$(id);s.innerHTML='<option value="">انتخاب کن...</option>';items.forEach(x=>{let o=document.createElement('option');o.textContent=x;s.appendChild(o)});}
+function loadRound(){let r=rounds[current];$('core').textContent=r.core;$('round').textContent=['۱','۲','۳'][current];fillSelect('time',r.times);fillSelect('place',r.places);fillSelect('how',r.hows);$('sentence').textContent='واگن‌ها را پر کن تا جمله‌ات ساخته شود.';$('feedback').textContent='';}
+function build(){let t=$('time').value,p=$('place').value,h=$('how').value;let r=rounds[current];let parts=[t,p,h].filter(Boolean);$('sentence').textContent=parts.length?r.subject+' '+(parts.join('، '))+' '+r.verb+'.':'هنوز واگنی را پر نکرده‌ای!';return parts.length;}
+$('build').addEventListener('click',build);
+$('check').addEventListener('click',()=>{let n=build();if(n===0){$('feedback').textContent='ابتدا دست‌کم یک واگن را انتخاب کن.';return;}if(checked[current]){$('feedback').textContent='این مرحله قبلاً امتیاز گرفته است. به مرحله بعد برو!';return;}let points=n===3?10:n===2?7:4;score+=points;checked[current]=true;$('score').textContent=String(score).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);$('feedback').textContent='آفرین! '+points+' امتیاز گرفتی. جمله‌ات را بخوان و از معنادار بودن آن مطمئن شو.';});
+$('next').addEventListener('click',()=>{if(current<2){current++;loadRound();}else{$('feedback').textContent='🎉 بازی تمام شد! امتیاز نهایی تو: '+score+' از ۳۰';}});
+$('reset').addEventListener('click',()=>{current=0;score=0;checked=[false,false,false];$('score').textContent='۰';loadRound();});
+loadRound();
+</script>
+</body>
+</html>
